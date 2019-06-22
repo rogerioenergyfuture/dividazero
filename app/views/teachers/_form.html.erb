@@ -1,0 +1,54 @@
+<%= yield :head %>
+  
+<%= form_for @teacher, :html => { :class => "form-horizontal form-bordered", 'data-toggle' => "validator" } do |f| %>
+<div class="container is-widescreen">
+  <div class="notification">
+<label class="label">DADOS GERAIS</label>    
+
+</br>
+  
+  <label class="label"><%= f.label :name %></label>
+  <div class ='form-control'>
+   <%= f.text_field :name, :class => 'input' ,'required' => 'true','data-minlength'=>'3', 
+   'data-error' => "Ops. Nome inválido ou muito pequeno. " %>
+  </div>
+
+  
+  </br>  
+  <label class="label"><%=f.label :status%></label>
+  <div class="form-control">
+     <%= f.select(:status, Teacher.statuses.keys.map {|status| [status.titleize,status]},{include_blank: false}, :class => 'form-control' )%>
+    </br>
+  </div> 
+ </br>  
+ 
+  <label class="label"><%= f.label :user_id  %></label>
+  <div class ='form-control'>
+   <%= f.collection_select(:user_id, @users, :id, :name, {include_blank: true}, { :class => 'form-control' })%>
+  </div>
+ 
+  
+  
+
+  
+</br>   
+<div class="field is-grouped">
+  <p class="control">
+    <%= f.submit nil, :class => 'button is-primary' %>    
+  </p>
+  <p class="control">
+    <a href="/users" class="button is-info">
+      Cancel
+    </a>
+  </p>
+</div>
+  
+  
+  
+  
+  
+  
+  </div>
+</div>
+<% end %>
+

@@ -1,0 +1,54 @@
+<%- model_class = Student -%> 
+ <!-- Left side -->
+  <div class="level-left">
+    <div class="level-item">
+         <p>   
+         <class="level-item"><a href="/students/new" class="button is-success">Novo</a> 
+         <class="level-item"><a href="/welcome/index?other=clique" class="button is-success">Dashboard</a>   
+         </p>
+    </div>
+  </div>
+
+
+
+        Listagem de Alunos da plataforma.
+        
+         <% if @students.count==1 %> 
+          <class="text-muted m-b-30"><%=@students.count%> registro
+         <% else %> 
+          <class="text-muted m-b-30"><%=@students.count%> registros
+         <% end %> 
+       
+<table class="table">
+  <thead>
+  <tr>
+    <th><%= sort_link(@q, :name, model_class.human_attribute_name(:name), default_order: :asc)%></th>
+   <th><%=t '.actions', :default => t("helpers.actions") %></th>
+   
+  </tr>
+  </thead>
+  <tfoot>
+  <tr>
+    <th><%= sort_link(@q, :name, model_class.human_attribute_name(:name), default_order: :asc)%></th>
+   <th><%=t '.actions', :default => t("helpers.actions") %></th>
+  </tr>
+  </tfoot>  
+  
+  <tbody>
+
+  <% @students.each do |student| %>
+   <tr>
+    <td><%= student.name %></td>
+    <td>
+      <%= link_to t('.show', :default => t("helpers.links.show")),
+       student_path(student), :class => 'btn btn-default btn-sm' %>
+     
+   </td>
+  </tr>
+<% end %>  
+  </tbody>
+</table>
+
+<%= will_paginate @students %>
+
+

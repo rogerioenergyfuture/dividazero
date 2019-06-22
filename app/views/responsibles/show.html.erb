@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cod:</strong>
+  <%= @responsible.cod %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @responsible.name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @responsible.status %>
+</p>
+
+<p>
+  <strong>Tel:</strong>
+  <%= @responsible.tel %>
+</p>
+
+<p>
+  <strong>Cel:</strong>
+  <%= @responsible.cel %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @responsible.email %>
+</p>
+
+<%= link_to 'Edit', edit_responsible_path(@responsible) %> |
+<%= link_to 'Back', responsibles_path %>

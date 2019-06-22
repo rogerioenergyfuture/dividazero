@@ -1,0 +1,110 @@
+rails new greenschool -d postgresql
+
+rails db:create
+
+rails db:migrate
+
+rails generate scaffold Responsible cod:string name:string status:integer tel:string cel:string email:string
+
+rails generate scaffold Student cod:string name:string status:integer telemerg:string responsible:references
+
+rails generate scaffold User name:string kind:integer status:integer
+
+gem "devise", ">= 4.6.0"
+
+bundle install
+
+bundle update
+
+rails generate devise:install
+
+rails g devise users
+
+rails g devise:controllers users
+
+rails g devise:views users
+
+  devise :database_authenticatable, 
+         :recoverable, :rememberable, :validatable
+
+rails db:migrate
+
+
+devise_for :users, controllers:{
+  sessions: 'users/sessions'
+ } 
+ 
+devise_scope :users do
+  get 'signin', to: 'users/sessions#new'
+  get 'signout', to: 'users/registration#destroy'
+end
+
+  resources :students
+  resources :responsibles
+  resources :users
+
+root "students#index"
+
+
+em models
+
+enum status: [ :'ativo', :'inativo']
+enum kind: [ :'admin',:'teacher' ]
+
+EM VIEWS/users/form
+
+<%= form.select(:status, User.statuses.keys.map {|status| [status.titleize,status]},{include_blank: false}, :class => 'form-control' )%>
+<%= form.select(:kind, User.kinds.keys.map {|kind| [kind.titleize,kind]},{include_blank: false}, :class => 'form-control' )%>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>  
+  
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>  
+
+em controllers/users
+
+    def user_params
+      params.require(:user).permit(:name, :kind, :status,:email,:password)
+    end
+
+rails generate controller Welcome index
+root "welcome#index" 
+
+
+em gemfile
+gem 'rails-assets-bulma', source: 'https://rails-assets.org'
+gem 'bulma', '~> 0.1.0'
+gem "pundit"
+
+bundle install
+
+bundle update
+
+rails g pundit:install
+
+rails g migration addroleToUser
+
+
+class AddroleToUser < ActiveRecord::Migration[5.2]
+  def change
+    add_column :users, :role,:integer
+  end
+end
+
+em user
+enum role: [ :'adm',:'normal_user' ]
+
+rails g pundit:policy student
+rails g pundit:policy user
+rails g pundit:policy responsible
+
+rails generate scaffold Teacher name:string level:integer status:integer user:references
+rails generate scaffold Team name:string level:integer status:integer year:integer value_cents:integer teacher:references
+
+rails g pundit:policy teacher
+rails g pundit:policy team

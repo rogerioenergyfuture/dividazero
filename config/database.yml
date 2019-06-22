@@ -1,0 +1,25 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  username: <%= Rails.application.credentials.dig(:database, :user) %>
+  password: <%= Rails.application.credentials.dig(:database, :pass) %>
+  host: <%= Rails.application.credentials.dig(:database, :host) %>  
+  database: greenschool_development
+
+test:
+  <<: *default
+  username: <%= Rails.application.credentials.dig(:database, :user) %>
+  password: <%= Rails.application.credentials.dig(:database, :pass) %>
+  host: <%= Rails.application.credentials.dig(:database, :host) %>  
+  database: greenschool_test
+
+production:
+  <<: *default
+  username: <%= Rails.application.credentials.dig(:database, :user) %>
+  password: <%= Rails.application.credentials.dig(:database, :pass) %>
+  host: <%= Rails.application.credentials.dig(:database, :host) %>  
+  database: greenschool_production

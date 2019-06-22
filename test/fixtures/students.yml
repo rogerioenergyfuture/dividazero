@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cod: MyString
+  name: MyString
+  status: 1
+  telemerg: MyString
+  responsible: one
+
+two:
+  cod: MyString
+  name: MyString
+  status: 1
+  telemerg: MyString
+  responsible: two

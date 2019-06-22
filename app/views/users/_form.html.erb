@@ -1,0 +1,64 @@
+<%= yield :head %>
+  
+<%= form_for @user, :html => { :class => "form-horizontal form-bordered", 'data-toggle' => "validator" } do |f| %>
+<div class="container is-widescreen">
+  <div class="notification">
+<label class="label">DADOS GERAIS</label>    
+
+</br>
+
+  <label class="label"><%= f.label :name %></label>
+  <div class ='form-control'>
+   <%= f.text_field :name, :class => 'input' ,'required' => 'true','data-minlength'=>'3', 
+   'data-error' => "Ops. Nome inválido ou muito pequeno. " %>
+  </div>
+  </br>  
+  <label class="label"><%= f.label :email %></label>
+  <div class ='form-control'>
+   <%= f.text_field :email, :class => 'input' ,'required' => 'true','data-minlength'=>'3', 
+   'data-error' => "Ops. Email inválido ou muito pequeno. " %>
+  </div>
+  </br> 
+  <label class="label"><%= f.label :password %></label>
+  <div class ='form-control'>
+   <%= f.password_field :password, :class => 'form-control' %>
+  </div>
+  </br>    
+  <label class="label"><%=f.label :status%></label>
+  <div class="form-control">
+     <%= f.select(:status, User.statuses.keys.map {|status| [status.titleize,status]},{include_blank: false}, :class => 'form-control' )%>
+    </br>
+  </div> 
+  </br>    
+  <label class="label"><%=f.label :kind%></label>
+  <div class="form-control">
+     <%= f.select(:kind, User.kinds.keys.map {|kind| [kind.titleize,kind]},{include_blank: false}, :class => 'form-control' )%>
+    </br>
+  </div> 
+ </br>  
+  <label class="label"><%=f.label :role%></label>
+  <div class="form-control">
+     <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]},{include_blank: false}, :class => 'form-control' )%>
+    </br>
+  </div> 
+ </br>  
+<div class="field is-grouped">
+  <p class="control">
+    <%= f.submit nil, :class => 'button is-primary' %>    
+  </p>
+  <p class="control">
+    <a href="/users" class="button is-info">
+      Cancel
+    </a>
+  </p>
+</div>
+  
+  
+  
+  
+  
+  
+  </div>
+</div>
+<% end %>
+

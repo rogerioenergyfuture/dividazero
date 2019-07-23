@@ -111,9 +111,25 @@
 
     </div>   
 
- <% end %> <!--Se está normal_user -->   
+ <% else %> <!--Se está normal_user --> 
+  <section class="section">
+    <div class="container">
+      <h1 class="title">
+        Greenschool
+      </h1>
+      <%= link_to('Sair',destroy_user_session_path(), method: :delete) %>
+      <strong style="color: $000;"> Olá,</strong> <%= current_user.email.to_s %>
+    <%= yield %>      
+    </div>
+  </section> 
+ 
+ 
+ 
+<% end %> 
 <% else %><!--Se está logado -->
    <%= yield %> 
+   
+   
 <% end %>
 
 

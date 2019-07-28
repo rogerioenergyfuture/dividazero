@@ -8,18 +8,18 @@ development:
   username: <%= Rails.application.credentials.dig(:database, :user) %>
   password: <%= Rails.application.credentials.dig(:database, :pass) %>
   host: <%= Rails.application.credentials.dig(:database, :host) %>  
-  database: greenschool_development
+  database: dividazero_development
 
 test:
   <<: *default
   username: <%= Rails.application.credentials.dig(:database, :user) %>
   password: <%= Rails.application.credentials.dig(:database, :pass) %>
   host: <%= Rails.application.credentials.dig(:database, :host) %>  
-  database: greenschool_test
+  database: dividazero_test
 
 production:
   <<: *default
   username: <%= Rails.application.credentials.dig(:database, :user) %>
   password: <%= Rails.application.credentials.dig(:database, :pass) %>
   host: <%= Rails.application.credentials.dig(:database, :host) %>  
-  database: greenschool_production
+  database: dividazero_production

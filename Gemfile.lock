@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/activerecord-hackery/ransack.git
-  revision: e9a2f0277ad1424df184adb83e7f5c682b54a697
+  revision: aada89548490f98dd3f1a65574ce20551c72d73c
   specs:
     polyamorous (2.1.1)
       activerecord (>= 5.0)

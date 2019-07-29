@@ -99,12 +99,10 @@ end
 em user
 enum role: [ :'adm',:'normal_user' ]
 
-rails g pundit:policy student
 rails g pundit:policy user
-rails g pundit:policy responsible
 
-rails generate scaffold Teacher name:string level:integer status:integer user:references
-rails generate scaffold Team name:string level:integer status:integer year:integer value_cents:integer teacher:references
 
-rails g pundit:policy teacher
-rails g pundit:policy team
+rails generate scaffold Company name:string kind:integer status:integer predefaulting:integer posdefaulting:integer prenotice:string postnotice:string user:references  
+
+
+rails g pundit:policy company

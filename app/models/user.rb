@@ -5,6 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   enum status: [ :'ativo', :'inativo'] 
-  enum kind: [ :'adm',:'teacher' ]
+  enum kind: [ :'adm',:'company' ]
   enum role: [ :'admin',:'normal_user' ]
 end

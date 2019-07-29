@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @company.name %>
+</p>
+
+<p>
+  <strong>Kind:</strong>
+  <%= @company.kind %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @company.status %>
+</p>
+
+<p>
+  <strong>Predefaulting:</strong>
+  <%= @company.predefaulting %>
+</p>
+
+<p>
+  <strong>Posdefaulting:</strong>
+  <%= @company.posdefaulting %>
+</p>
+
+<p>
+  <strong>Prenotice:</strong>
+  <%= @company.prenotice %>
+</p>
+
+<p>
+  <strong>Postnotice:</strong>
+  <%= @company.postnotice %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @company.user %>
+</p>
+
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>

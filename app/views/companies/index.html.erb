@@ -1,0 +1,66 @@
+<%- model_class = Company -%> 
+ <!-- Left side -->
+  <div class="level-left">
+    <div class="level-item">
+         <p>   
+         <class="level-item"><a href="/companies/new" class="button is-success">Novo</a> 
+         <class="level-item"><a href="/welcome/index?other=clique" class="button is-success">Dashboard</a>   
+         </p>
+    </div>
+  </div>
+  
+
+
+
+
+
+        Listagem de empresas da plataforma.
+         <% if @companies.count==1 %> 
+          <class="text-muted m-b-30"><%=@companies.count%> registro
+         <% else %> 
+          <class="text-muted m-b-30"><%=@companies.count%> registros
+         <% end %> 
+
+
+<table class="table">
+  <thead>
+  <tr>
+     <th><%= sort_link(@q, :name, model_class.human_attribute_name(:name), default_order: :asc)%></th>
+     <th><%= sort_link(@q, :kind, model_class.human_attribute_name(:kind), default_order: :asc)%></th>
+     <th><%= sort_link(@q, :status, model_class.human_attribute_name(:status), default_order: :asc)%></th>
+     <th><%=t '.actions', :default => t("helpers.actions") %></th>
+   
+  </tr>
+  </thead>
+  <tbody>
+
+
+<% @companies.each do |company| %>
+ <tr>
+  <td><%= company.name %></td>
+  <td><%= company.kind %></td>
+  <td><%= company.status%></td>
+  <td>
+     <%= link_to t('.show', :default => t("helpers.links.show")),
+       company_path(company), :class => 'btn btn-default btn-sm' %>
+
+
+     <%= link_to t('.edit', :default => t("helpers.links.edit")),
+       edit_company_path(company), :class => 'btn btn-default btn-sm' %>
+       
+ 
+  </td>
+</tr>
+<% end %>
+
+
+
+
+
+
+  </tbody>
+</table>   
+<%= will_paginate @companies %>
+
+
+

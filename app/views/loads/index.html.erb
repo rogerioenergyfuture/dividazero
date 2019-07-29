@@ -9,6 +9,7 @@
       <th>Quantparcel</th>
       <th>Daypay</th>
       <th>Hold</th>
+      <th>Envio</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,7 +20,8 @@
         <td><%= load.dateload %></td>
         <td><%= load.quantparcel %></td>
         <td><%= load.daypay %></td>
-        <td><%= load.hold %></td>
+        <td><%= load.hold.name %></td>
+        <td><%= load.psend %></td>
         <td><%= link_to 'Show', load %></td>
         <td><%= link_to 'Edit', edit_load_path(load) %></td>
         <td><%= link_to 'Destroy', load, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -31,3 +33,11 @@
 <br>
 
 <%= link_to 'New Load', new_load_path %>
+
+<div>
+	<h4> Import that data! </h4>
+		<%= form_tag import_loads_path, multipart: true do %>
+		<%= file_field_tag :file %>
+		<%= submit_tag "Import CSV" %>
+		<% end %> 
+</div>

@@ -1,5 +1,22 @@
 class LoadsController < ApplicationController
-  before_action :set_load, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user! 
+  before_action :set_load, only: [:show, :edit,:update, :destroy]
+  before_action :set_holds, only: [:new,:edit,:update, :index,:search] 
+  
+  
+  def redirect(url, text)
+  	redirect_to url, notice: text
+  end  
+  
+  def import
+  	if params[:file]
+  		Load.import(params[:file])
+  		redirect(root_url, "Activity Data imported!")	
+  	else
+  		redirect(root_url, "Please upload a CSV file")
+  	end
+  end 
+  
 
   # GET /loads
   # GET /loads.json
@@ -15,6 +32,7 @@ class LoadsController < ApplicationController
   # GET /loads/new
   def new
     @load = Load.new
+    helpers.loading
   end
 
   # GET /loads/1/edit
@@ -69,6 +87,12 @@ class LoadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def load_params
-      params.require(:load).permit(:dateload, :quantparcel, :daypay, :hold_id)
+      params.require(:load).permit(:dateload, :quantparcel, :daypay, :hold_id,:psend)
     end
+    
+    def set_holds
+     @holds=Hold.where('status=?',0).order(name: :asc)
+    end       
+    
+    
 end

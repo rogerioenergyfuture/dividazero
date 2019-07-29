@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @hold.code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @hold.name %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @hold.mobile %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @hold.email %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @hold.status %>
+</p>
+
+<p>
+  <strong>Predefaulting:</strong>
+  <%= @hold.predefaulting %>
+</p>
+
+
+<p>
+  <strong>Company:</strong>
+  <%= @hold.company.name %>
+</p>
+
+<%= link_to 'Edit', edit_hold_path(@hold) %> |
+<%= link_to 'Back', holds_path %>

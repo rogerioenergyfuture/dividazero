@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_29_114928) do
+ActiveRecord::Schema.define(version: 2019_07_29_162308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,29 @@ ActiveRecord::Schema.define(version: 2019_07_29_114928) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_companies_on_user_id"
+  end
+
+  create_table "holds", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.string "mobile"
+    t.string "email"
+    t.integer "status"
+    t.integer "predefaulting"
+    t.bigint "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_holds_on_company_id"
+  end
+
+  create_table "loads", force: :cascade do |t|
+    t.date "dateload"
+    t.integer "quantparcel"
+    t.integer "daypay"
+    t.bigint "hold_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hold_id"], name: "index_loads_on_hold_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,4 +69,6 @@ ActiveRecord::Schema.define(version: 2019_07_29_114928) do
   end
 
   add_foreign_key "companies", "users"
+  add_foreign_key "holds", "companies"
+  add_foreign_key "loads", "holds"
 end

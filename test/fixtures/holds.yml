@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  name: MyString
+  mobile: MyString
+  email: MyString
+  status: 1
+  predefaulting: 1
+  quantparcel: 1
+  dateparcel: MyString
+  company: one
+
+two:
+  code: MyString
+  name: MyString
+  mobile: MyString
+  email: MyString
+  status: 1
+  predefaulting: 1
+  quantparcel: 1
+  dateparcel: MyString
+  company: two

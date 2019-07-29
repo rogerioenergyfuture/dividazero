@@ -1,0 +1,89 @@
+<%= javascript_include_tag 'holds' %>
+<%= yield :head %>
+  <%= render :partial => "holds/topform" %>
+<%= form_for @hold, :html => { :class => "form-horizontal form-bordered", 'data-toggle' => "validator" } do |f| %>
+<div class="container is-widescreen">
+  <div class="notification">
+<label class="label">DADOS GERAIS</label>    
+
+</br>
+
+
+  <label class="label"><%=f.label :code%></label>
+  <div class="form-control">
+   <%= f.text_field :code, :class => 'input' %>
+    </div>
+    </br>  
+
+
+  <label class="label"><%= f.label :name %></label>
+  <div class ='form-control'>
+   <%= f.text_field :name, :class => 'input' ,'required' => 'true','data-minlength'=>'3', 
+   'data-error' => "Ops. Nome inválido ou muito pequeno. " %>
+  </div>
+  </br>  
+  
+  
+  <label class="label"><%=f.label :email%></label>
+  <div class="form-control">
+   <%= f.text_field :email, :class => 'input' ,'required' => 'true','data-minlength'=>'3', 
+   'data-error' => "Ops. Nome inválido ou muito pequeno. " %>
+    </div>
+    </br>  
+    
+    
+  <label class="label"><%=f.label :mobile%></label>
+  <div class ='form-control'>
+    <%= f.text_field :mobile,{:class => 'form-control',:data => {:mask=> '(99)99999.9999'}} %>
+  </div>    
+  
+  
+  <label class="label"><%= f.label :predefaulting %></label>
+  <div class="form-group">
+   <%= f.select(:predefaulting, Hold.predefaultings.keys.map {|predefaulting| [predefaulting.titleize,predefaulting]},{include_blank: false}, :class => 'form-control' )%>
+  </div>
+  </br>  
+  
+ 
+  <label class="label"><%= f.label :status %></label>
+  <div class="form-group">
+   <%= f.select(:status, Hold.statuses.keys.map {|status| [status.titleize,status]},{include_blank: false}, :class => 'form-control' )%>
+  </div>
+  </br> 
+  
+
+  <label class="label"><%=f.label :name%></label>
+  <div class="form-control">
+    <div class="select">
+     <%= f.collection_select(:company_id, @companies.order(:name), :id, :name, {include_blank: false}, { :class => 'form-control' })%>
+    </div>
+    </br>
+  </div> 
+
+  
+
+  </div>   
+  
+  
+<div class="field is-grouped">
+  <p class="control">
+    <%= f.submit nil, :class => 'button is-primary' %>    
+  </p>
+  <p class="control">
+    <a href="/holds" class="button is-info">
+      Cancel
+    </a>
+  </p>
+</div>
+  
+  
+  
+  
+  
+  
+  </div>
+</div>
+<% end %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

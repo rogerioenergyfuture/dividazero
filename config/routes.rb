@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   
   
 
+  resources :loads
+  resources :holds
   resources :companies
   get 'welcome/index'
 devise_for :users, controllers:{

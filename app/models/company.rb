@@ -3,5 +3,5 @@ class Company < ApplicationRecord
   enum status: [ :'ativo', :'inativo'] 
   enum kind: [ :'escola', :'condomínio',:'comércio'] 
   enum predefaulting: [ :'sim', :'não'] 
-  enum posdefaulting: [ :'S', :'N'] 
+  enum posdefaulting: [ :'Sim', :'Não'] 
 end

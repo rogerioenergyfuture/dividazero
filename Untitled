@@ -102,7 +102,11 @@ enum role: [ :'adm',:'normal_user' ]
 rails g pundit:policy user
 
 
-rails generate scaffold Company name:string kind:integer status:integer predefaulting:integer posdefaulting:integer prenotice:string postnotice:string user:references  
+rails generate scaffold Company name:string kind:integer status:integer predefaulting:integer posdefaulting:integer prenotice:string postnotice:string user:references
+
+rails generate scaffold Hold code:string name:string mobile:string email:string status:integer predefaulting:integer quantparcel:integer dateparcel:string company:references 
+
+rails generate scaffold Load dateload:date quantparcel:integer daypay:integer hold:references
 
 
 rails g pundit:policy company

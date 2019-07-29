@@ -37,8 +37,9 @@
 
 <p>
   <strong>User:</strong>
-  <%= @company.user %>
+  <%= @company.user.email %>
 </p>
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'New Hold', new_hold_path  %> |
 <%= link_to 'Back', companies_path %>

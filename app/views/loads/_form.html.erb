@@ -1,0 +1,37 @@
+<%= form_with(model: load, local: true) do |form| %>
+  <% if load.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(load.errors.count, "error") %> prohibited this load from being saved:</h2>
+
+      <ul>
+      <% load.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :dateload %>
+    <%= form.date_select :dateload %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantparcel %>
+    <%= form.number_field :quantparcel %>
+  </div>
+
+  <div class="field">
+    <%= form.label :daypay %>
+    <%= form.number_field :daypay %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hold_id %>
+    <%= form.text_field :hold_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

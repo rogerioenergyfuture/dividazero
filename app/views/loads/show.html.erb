@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Dateload:</strong>
+  <%= @load.dateload %>
+</p>
+
+<p>
+  <strong>Quantparcel:</strong>
+  <%= @load.quantparcel %>
+</p>
+
+<p>
+  <strong>Daypay:</strong>
+  <%= @load.daypay %>
+</p>
+
+<p>
+  <strong>Hold:</strong>
+  <%= @load.hold %>
+</p>
+
+<%= link_to 'Edit', edit_load_path(@load) %> |
+<%= link_to 'Back', loads_path %>

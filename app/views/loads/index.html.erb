@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Loads</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Dateload</th>
+      <th>Quantparcel</th>
+      <th>Daypay</th>
+      <th>Hold</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @loads.each do |load| %>
+      <tr>
+        <td><%= load.dateload %></td>
+        <td><%= load.quantparcel %></td>
+        <td><%= load.daypay %></td>
+        <td><%= load.hold %></td>
+        <td><%= link_to 'Show', load %></td>
+        <td><%= link_to 'Edit', edit_load_path(load) %></td>
+        <td><%= link_to 'Destroy', load, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Load', new_load_path %>

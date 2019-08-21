@@ -11,12 +11,6 @@ GIT
       i18n
       polyamorous (= 2.3.0)
 
-GIT
-  remote: https://github.com/jonatack/will_paginate.git
-  revision: 3c861498bdbc643638c1f25bdbe67f93d03be79b
-  specs:
-    will_paginate (3.0.4)
-
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -237,6 +231,7 @@ GEM
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
+    will_paginate (3.1.8)
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
@@ -256,6 +251,7 @@ DEPENDENCIES
   jquery-turbolinks
   listen (>= 3.0.5, < 3.2)
   money-rails (~> 1.13, >= 1.13.1)
+  nokogiri (~> 1.6, >= 1.6.8)
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   pundit
@@ -270,7 +266,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
-  will_paginate!
+  will_paginate (~> 3.1, >= 3.1.6)
 
 RUBY VERSION
    ruby 2.5.1p57

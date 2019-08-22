@@ -1,10 +1,17 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if current_user.admin?
+     @q = User.ransack(params[:q].try(:merge, m: params[:combinator]))
+     @users = @q.result.all.paginate(:page => params[:page], :per_page => 20).order(email: :asc)
+    else  
+      redirect_to welcome_index_path
+    end
+    #authorize @users
   end
 
   # GET /users/1

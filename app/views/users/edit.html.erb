@@ -1,5 +1,7 @@
-<h1>Editing User</h1>
-
-<%= render 'form', user: @user %>
+<% content_for :head do %>
+ 
+<% end %>
+<%- model_class = User -%>
+<%= render :partial => 'form' %>
 
 

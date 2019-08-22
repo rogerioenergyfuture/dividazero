@@ -1,31 +1,79 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = User -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
 
-<h1>Users</h1>
+ <!-- Left side -->
+  <div class="level-left">
+    <div class="level-item">
+         <p>   
+         <class="level-item"><a href="/users/new" class="button is-success">Novo</a> 
+         <class="level-item"><a href="/welcome/index?other=clique" class="button is-success">Dashboard</a>   
+         </p>
+    </div>
+  </div>
 
-<table>
+
+ <!-- Left side -->
+  <div class="level-left">
+ <p class="level-item">   
+  <%= search_form_for @q do |f| %>  
+    
+
+  <%= f.label :email_cont %>
+  <%= f.search_field :email_cont %>      
+      
+  <%= f.select :combinator, [['E','and'],['OU','or']] %>
+
+  <%= f.label :kind_eq %>
+  <%= f.select :kind_eq, User.kinds.to_a.map { |w| [w[0].humanize, w[1]] },{:include_blank=> "Selecione o tipo"} %> 
+    
+     <%= f.label :role_eq %>
+     <%= f.select :role_eq, User.roles.to_a.map { |w| [w[0].humanize, w[1]] },{:include_blank=> "Selecione o Acesso"} %>    
+
+  <%= f.submit %>
+  
+<% end %>         
+ </p>         
+      
+</div>
+
+
+        Listagem de publishers da plataforma.
+         <% if User.count==1 %> 
+          <class="text-muted m-b-30"><%=User.count%> registro
+         <% else %> 
+          <class="text-muted m-b-30"><%=User.count%> registros
+         <% end %> 
+
+
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Kind</th>
-      <th>Status</th>
-      <th colspan="3"></th>
+      <th><%= sort_link(@q, :email) %></th>
+      <th><%= sort_link(@q, :status) %></th>
+      <th><%= sort_link(@q, :kind) %></th>
+      <th><%= sort_link(@q, :role) %></th>
+      <th><%= sort_link(@q, :last_sign_in_at) %></th>   
+      <th><%= sort_link(@q, :sign_in_count) %></th> 
     </tr>
   </thead>
-
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.name %></td>
-        <td><%= user.kind %></td>
+        <td><%= link_to user.email, user_path(user), :class => '' %> </td>
         <td><%= user.status %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= user.kind %></td>
+        <td><%= user.role %></td>
+        <% if user.last_sign_in_at!=nil%>
+         <td><%=(user.last_sign_in_at).strftime("%d-%m-%Y %H:%M:%S") %></td>
+        <% else %>
+         <td> Não logou </td>
+        <% end %>
+        <td><%= user.sign_in_count %></td> 
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New User', new_user_path %>
+ <%= will_paginate @users %>   

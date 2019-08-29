@@ -39,7 +39,7 @@ gem 'bulma', '~> 0.1.0'
 gem "pundit"
 gem 'money-rails', '~> 1.13', '>= 1.13.1'
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
-gem 'ransack', '~> 2.3'
+gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'jquery-turbolinks'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'nokogiri', '~> 1.6', '>= 1.6.8'

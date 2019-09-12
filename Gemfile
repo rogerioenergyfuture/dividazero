@@ -33,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem "devise", ">= 4.6.0"
+gem "devise", ">= 4.7.1"
 gem 'rails-assets-bulma', source: 'https://rails-assets.org'
 gem 'bulma', '~> 0.1.0'
 gem "pundit"

@@ -42,7 +42,7 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'jquery-turbolinks'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
-gem 'nokogiri', '~> 1.6', '>= 1.6.8'
+gem 'nokogiri', '~> 1.10'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
